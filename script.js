@@ -4,9 +4,7 @@ let images=document.querySelector(".images")
 let load=document.querySelector("#load")
 
 
-
-
-const accessKey="MQZil6h02LUIGiiIa7ZQ6vvOCbgqsYXmlzjxUweTaXI"
+const accessKey="MQZil6h02LUIGiiIa7ZQ6vvOCbgqsYXmlzjxUweTaXI";
 let page=1;
 let keyword=""
 function download(imgurl){
@@ -21,7 +19,6 @@ function download(imgurl){
         alert("failed download")
     )
 }
-
 
 
 async function getResponse() {
@@ -44,11 +41,11 @@ async function getResponse() {
       let html=`<img src="${result.preview_photos[0].urls.small}" alt="img" class="photo">
         <div class="details">
             <div class="user">
-                <img src="camera.svg" alt="img">
+                <img src="Assets/camera.svg" alt="img" loading="lazy">
                 <span>${result.title}</span>
             </div>
             <div class="download" onclick=download('${result.preview_photos[0].urls.small}')>
-                <img src="download.svg" alt="img">
+                <img src="Assets/download.svg" alt="img" loading="lazy">
             </div>
         </div>`
         li.innerHTML=html
