@@ -79,6 +79,7 @@ body{
     background-color: rgba(10, 30, 111, 0.566);
 }
 .image-gallery{
+    background-color: #e0f7fa;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,9 +88,9 @@ body{
     padding-bottom:40px ;
 }
 .image-gallery .images{
-columns: 5 340px;
-max-width: 95%;
-margin-top: 20px;
+  columns: 5 340px;
+  max-width: 95%;
+  margin-top: 20px;
 
 }
 .image{
@@ -131,32 +132,205 @@ margin-top: 20px;
     gap:10px
 
 }
-.download img{
-    padding: 10px;
-    background-color: rgb(10, 30, 111);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-.download img:hover{
-    background-color: rgba(10, 30, 111, 0.566);
 
-}
-#load{
-    width: 100px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgb(10, 30, 111);
-    border: none;
-    transition: all 0.2s;
-    cursor: pointer;
-    color: white;
-    font-size: 20px;
+/* modern download button  */
+.button {
+    --width: 100px;
+    --height: 35px;
+    --tooltip-height: 35px;
+    --tooltip-width: 90px;
+    --gap-between-tooltip-to-button: 18px;
+    --button-color: #1163ff;
+    --tooltip-color: #fff;
+    width: var(--width);
+    height: var(--height);
+    background: var(--button-color);
+    position: relative;
+    text-align: center;
+    border-radius: 0.45em;
+    font-family: "Arial";
+    transition: background 0.3s;
+  }
+  
+  .button::before {
+    position: absolute;
+    content: attr(data-tooltip);
+    width: var(--tooltip-width);
+    height: var(--tooltip-height);
+    background-color: var(--tooltip-color);
+    font-size: 0.9rem;
+    color: #111;
+    border-radius: .25em;
+    line-height: var(--tooltip-height);
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+    left: calc(50% - var(--tooltip-width) / 2);
+  }
+  
+  .button::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: var(--tooltip-color);
+    left: calc(50% - 10px);
+    bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+  }
+  
+  .button::after,.button::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+  }
+  
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-wrapper,.text,.icon {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    color: #fff;
+  }
+  
+  .text {
+    top: 0
+  }
+  
+  .text,.icon {
+    transition: top 0.5s;
+  }
+  
+  .icon {
+    color: #fff;
+    top: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .button:hover {
+    background: #6c18ff;
+  }
+  
+  .button:hover .text {
+    top: -100%;
+  }
+  
+  .button:hover .icon {
+    top: 0;
+  }
+  
+  .button:hover:before,.button:hover:after {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .button:hover:after {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+  }
+  
+  .button:hover:before {
+    bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+  }
+
+  #load {
     display: none;
+    width: auto; /* Adjust width to fit text */
+    min-width: 140px; /* Minimum width for better spacing */
+    padding: 12px 20px; /* Padding for space inside the button */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    background-color: #00796b; /* Teal color that complements the background */
+    border: none; /* No border */
+    color: white; /* Text color */
+    font-size: 18px; /* Font size */
+    font-weight: 600; /* Slightly bold text */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    text-transform: uppercase; /* Uppercase text for a modern feel */
+    letter-spacing: 1px; /* Slight letter spacing for readability */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    cursor: pointer; /* Pointer on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Initial shadow for depth */
+  }
+  
+  #load:hover {
+    background-color: #004d40; /* Darker teal color on hover */
+    transform: translateY(-2px) scale(1.05); /* Lift and scale effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Enhance shadow on hover */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Add a subtle white border on hover */
+  }
+  
+  #load:active {
+    transform: translateY(1px) scale(0.95); /* Press effect with slight scale down */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on active */
+  }
+
+.spinner {
+    display: none;
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    width: 56px;
+    height: 56px;
+    border: 11.2px #474bff double;
+    border-left-style: solid;
+    border-radius: 50%;
+    animation: spinner-aib1d7 0.75s infinite linear;
 }
-#load:hover{
-    background-color: rgba(10, 30, 111, 0.566);
+
+/* Large screens (laptops) */
+@media (min-width: 1024px) {
+  .spinner {
+      width: 80px; /* Larger size for laptops */
+      height: 80px;
+  }
 }
+
+.error-container {
+  display: none; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  text-align: center; /* Center text */
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb; /* Border color */
+  padding: 20px; /* Add padding */
+  margin: 20px; /* Add margin */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  font-family: 'Roboto', sans-serif; /* Use the new font */
+}
+
+.error-container img {
+  margin-bottom: 10px; /* Space between the image and text */
+}
+
+.error-container p {
+  font-size: 16px; /* Set font size for the message */
+  margin: 0; /* Remove default margin */
+  font-family: 'Open Sans', sans-serif; /* Different font for the paragraph */
+}
+
+
+@keyframes spinner-aib1d7 {
+   to {
+      transform: rotate(360deg);
+   }
+}
+  
 @media (max-width:800px) {
     .content h1{
         font-size: 5vw;

@@ -15,9 +15,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
 
+    <!-- Google-Font Access  -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Hero-Section  -->
   <div class="search-area">
     <div class="black"></div>
       <div class="content">
@@ -31,6 +36,8 @@
           </div>
       </div>
   </div> 
+
+  <!-- Images-display-container  -->
   <div class="image-gallery">
     <ul class="images">
         <li class="image"><img src="Assets/img-1.jpg" alt="img" class="photo" loading="lazy"></li>
@@ -44,8 +51,20 @@
         <li class="image"><img src="Assets/img-9.png" alt="img" class="photo" loading="lazy"></li>
         <li class="image"><img src="Assets/img-10.jpg" alt="img" class="photo" loading="lazy"></li>
     </ul>
-    <button id="load">View More</button>
+
+    <button id="load">View more</button>
+     <!-- Error Display section  -->
+
+    <div class="error-container">
+      <img src="Assets/not-found.png" width="200" height="200" alt="Not Found">
+      <p>Oops! The image you are looking for could not be found.</p>
+    </div>
+  
   </div> 
+
+  <!-- spinner-section  -->
+  <div class="spinner"></div>
+
  <script src="script.js"></script>   
 </body>
 </html>
