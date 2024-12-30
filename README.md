@@ -28,7 +28,7 @@ A simple and elegant web application for searching and downloading images. Built
 ---
 
 ## API Used 
--- Unsplash Image API for fetching live images
+- Unsplash Image API for fetching live images
 
 ---
 
