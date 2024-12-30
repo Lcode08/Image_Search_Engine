@@ -1,4 +1,4 @@
-### Image Search Engine 🌐
+# Image Search Engine 🌐
 A simple and elegant web application for searching and downloading images. Built with performance and user experience in mind, this application provides a seamless way to find and explore beautiful images.
 
 ---
